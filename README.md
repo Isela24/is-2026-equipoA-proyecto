@@ -1,22 +1,22 @@
 # is-2026-equipoA-proyecto
-Ingeniería de Software
-# Nombre del proyecto
-
-## Ingeniería de Software
+# Ingeniería de Software
 
 ### Integrantes
-- Tu nombre completo
-- Nombre del integrante 2
-- Nombre del integrante 3
+- Isela Carranco Martínez
+- Carla GUadalupe Ruiz Vallejo
+- Manuel Arreguín Tamayo
+
+### Grupo
+7A
 
 ### Docente
-Nombre del docente
+Rosalba Castanedo Martínez
 
 ### Institución
-Nombre de la universidad
+Universidad Politécnica de Guanajuato
 
-### Periodo
-Septiembre - Diciembre 2026
+# Nombre del proyecto
+Proyecto github
 
 ## Descripción
 Proyecto colaborativo
