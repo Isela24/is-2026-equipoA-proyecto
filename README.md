@@ -6,14 +6,17 @@
 - Carla GUadalupe Ruiz Vallejo
 - Manuel Arreguín Tamayo
 
+### Grupo
+7A
+
 ### Docente
 Rosalba Castanedo Martínez
 
 ### Institución
 Universidad Politécnica de Guanajuato
 
-### Periodo
-Septiembre - Diciembre 2026
+# Nombre del proyecto
+Proyecto github
 
 ## Descripción
 Proyecto colaborativo
