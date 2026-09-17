@@ -15,8 +15,8 @@ Rosalba Castanedo Martínez
 ### Institución
 Universidad Politécnica de Guanajuato
 
-# Nombre del proyecto
-Proyecto github
+### Periodo
+Septiembre - Diciembre 2026
 
 ## Descripción
 Proyecto colaborativo
