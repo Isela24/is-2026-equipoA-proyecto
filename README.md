@@ -1,11 +1,13 @@
 # is-2026-equipoA-proyecto
-Ingeniería de Software
-#
+# Ingeniería de Software
 
 ### Integrantes
 - Isela Carranco Martínez
 - Carla GUadalupe Ruiz Vallejo
 - Manuel Arreguín Tamayo
+
+### Grupo
+7A
 
 ### Docente
 Rosalba Castanedo Martínez
