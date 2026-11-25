@@ -1,0 +1,113 @@
+/* Selector de etiquetas predeterminadas RITMO */
+.tag-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 18px 0 20px;
+  min-width: 0;
+}
+.tag-fieldset legend {
+  display: block;
+  padding: 0;
+  margin-bottom: 7px;
+  color: #252a50;
+  font-size: 13px;
+  font-weight: 800;
+}
+.tag-help {
+  color: #8589a8;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0 0 11px;
+}
+.tag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.tag-option {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+}
+.tag-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.tag-option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 37px;
+  padding: 8px 13px;
+  border: 1px solid #e5e6f2;
+  border-radius: 999px;
+  background: #fafaff;
+  color: #606581;
+  font-size: 11px;
+  font-weight: 700;
+  transition: .18s ease;
+}
+.tag-option span::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b9bdd2;
+  transition: .18s ease;
+}
+.tag-option input:checked + span {
+  color: #5145a9;
+  border-color: #9384e7;
+  background: linear-gradient(135deg, #f0efff, #edf5ff);
+  box-shadow: 0 3px 10px rgba(103, 91, 191, .10);
+}
+.tag-option input:checked + span::before {
+  background: #7463d5;
+  box-shadow: 0 0 0 3px rgba(116, 99, 213, .12);
+}
+.tag-option.priority input:checked + span {
+  border-color: #e6b75f;
+  color: #946316;
+  background: linear-gradient(135deg, #fff8e8, #fff2dc);
+}
+.tag-option.priority input:checked + span::before {
+  background: #e0a536;
+  box-shadow: 0 0 0 3px rgba(224, 165, 54, .15);
+}
+.tag-option input:focus-visible + span {
+  outline: 3px solid rgba(104, 126, 237, .25);
+  outline-offset: 2px;
+}
+.tag-option:hover span { border-color: #bcb6ec; transform: translateY(-1px); }
+.tag-loading, .tag-empty {
+  color: #898da8;
+  font-size: 11px;
+  padding: 7px 0;
+}
+@media (max-width: 480px) {
+  .tag-options { gap: 7px; }
+  .tag-option span { padding: 7px 10px; min-height: 34px; }
+}
+/* Prioridad de estilos frente a las reglas generales de etiquetas del modal. */
+.modal .tag-option {
+  display: inline-flex;
+  margin: 0;
+  width: auto;
+  font-weight: 700;
+}
+.modal .tag-option input {
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.modal .tag-option span {
+  display: inline-flex;
+  margin: 0;
+  line-height: 1.2;
+}
