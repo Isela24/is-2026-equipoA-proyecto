@@ -1,9 +1,5 @@
--- ============================================================
 -- GESTOR Y VISUALIZADOR DE HABITOS PERSONALES
 -- Motor: MariaDB 10.4+ (XAMPP)
--- Archivo: GestorHabitos_MariaDB.sql
-
--- ============================================================
 
 CREATE DATABASE IF NOT EXISTS GestorHabitos
     CHARACTER SET utf8mb4
@@ -11,10 +7,7 @@ CREATE DATABASE IF NOT EXISTS GestorHabitos
 
 USE GestorHabitos;
 
--- ------------------------------------------------------------
 -- 1. USUARIOS
--- Cada cuenta tiene sus propios habitos.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Usuarios (
     id_usuario INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -38,11 +31,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 2. CATEGORIAS
--- Catalogo compartido por los usuarios, como en el modelo
--- original. Un habito puede no tener categoria.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Categorias (
     id_categoria INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -55,10 +44,7 @@ CREATE TABLE IF NOT EXISTS Categorias (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 3. ETIQUETAS
--- Catalogo compartido. Un habito puede tener varias etiquetas.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Etiquetas (
     id_etiqueta INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -71,12 +57,7 @@ CREATE TABLE IF NOT EXISTS Etiquetas (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 4. HABITOS
--- Cada habito pertenece obligatoriamente a un usuario.
--- ON DELETE CASCADE elimina sus cumplimientos y etiquetas
--- asociadas cuando se elimina el habito.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Habitos (
     id_habito INT UNSIGNED NOT NULL AUTO_INCREMENT,
     id_usuario INT UNSIGNED NOT NULL,
@@ -114,12 +95,7 @@ CREATE TABLE IF NOT EXISTS Habitos (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 5. CUMPLIMIENTOS
--- Un habito solo puede tener un cumplimiento por fecha.
--- Las rachas y estadisticas se calculan desde PHP consultando
--- estas fechas; no hace falta almacenar una racha redundante.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Cumplimientos (
     id_cumplimiento INT UNSIGNED NOT NULL AUTO_INCREMENT,
     id_habito INT UNSIGNED NOT NULL,
@@ -139,10 +115,7 @@ CREATE TABLE IF NOT EXISTS Cumplimientos (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 6. HABITO_ETIQUETAS
--- Tabla intermedia para la relacion muchos a muchos.
--- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS HabitoEtiquetas (
     id_habito INT UNSIGNED NOT NULL,
     id_etiqueta INT UNSIGNED NOT NULL,
@@ -167,12 +140,7 @@ CREATE TABLE IF NOT EXISTS HabitoEtiquetas (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
 -- 7. DATOS INICIALES OPCIONALES
--- Categorias y etiquetas de ejemplo.
--- INSERT IGNORE evita duplicados si se ejecuta otra vez.
--- Puedes quitar este bloque si prefieres catalogos vacios.
--- ------------------------------------------------------------
 INSERT IGNORE INTO Categorias (nombre) VALUES
     ('Salud'),
     ('Ejercicio'),
@@ -185,11 +153,17 @@ INSERT IGNORE INTO Etiquetas (nombre) VALUES
     ('Tarde'),
     ('Noche'),
     ('Diario');
+    
+INSERT INTO `etiquetas` (`nombre`)
+SELECT 'Prioritario'
+FROM DUAL
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM `etiquetas`
+    WHERE `nombre` = 'Prioritario'
+);
 
--- ------------------------------------------------------------
 -- 8. VERIFICACION
--- Deben aparecer las seis tablas del proyecto.
--- ------------------------------------------------------------
 SELECT
     TABLE_NAME AS Nombre_Tabla
 FROM INFORMATION_SCHEMA.TABLES
